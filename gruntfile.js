@@ -7,16 +7,33 @@ module.exports = function (grunt) {
 
         //The Concat Task
         concat: {
+            bootstrap: {
+                src: [
+                    'assets/javascripts/bootstrap/transition.js',
+                    'assets/javascripts/bootstrap/alert.js',
+                    'assets/javascripts/bootstrap/button.js',
+                    'assets/javascripts/bootstrap/carousel.js',
+                    'assets/javascripts/bootstrap/collapse.js',
+                    'assets/javascripts/bootstrap/dropdown.js',
+                    'assets/javascripts/bootstrap/modal.js',
+                    'assets/javascripts/bootstrap/tooltip.js',
+                    'assets/javascripts/bootstrap/popover.js',
+                    'assets/javascripts/bootstrap/scrollspy.js',
+                    'assets/javascripts/bootstrap/tab.js',
+                    'assets/javascripts/bootstrap/affix.js'
+                ],
+                dest: 'assets/bootstrap.js'
+            },
             dist: {
                 options: {
                     separator: '\n\r',
                     banner: '/*\nConcatinated JS file \n' +
-                            'Author: Aykan Burçak \n' +
-                            'Created Date: <%= grunt.template.today("yyyy-mm-dd") %>' +
-                            '\n */ \n'
+                        'Author: Aykan Burçak \n' +
+                        'Created Date: <%= grunt.template.today("yyyy-mm-dd") %>' +
+                        '\n */ \n'
                 },
                 // select the files to concatenate
-                src: ['assets/**/*.js'],
+                src: ['assets/javascripts/custom/**/*.js'],
                 // the resulting JS file
                 dest: 'assets/project.js'
             }
@@ -27,6 +44,10 @@ module.exports = function (grunt) {
             options: {
                 //  banner for inserting at the top of the result
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
+            },
+            boostrap: {
+                src: ['assets/bootstrap.js'],
+                dest: 'assets/bootstrap.min.js'
             },
             build: {
                 src: ['assets/project.js'],
